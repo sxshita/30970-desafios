@@ -1,53 +1,53 @@
-class Usuario {
-    constructor(nombre, apellido, libros, mascotas){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.libros = libros;
-        this.mascotas = mascotas;
+class User {
+    constructor(name, surname, books, pets){
+        this.name = name;
+        this.surname = surname;
+        this.books = books;
+        this.pets = pets;
     };
 
-    getfullName(){
-        return console.log(`${this.nombre} ${this.apellido}`);
+    getFullName(){
+        return console.log(`${this.name} ${this.surname}`);
     };
 
-    addMascota(mascota){
-        this.mascotas.push(mascota);
+    addPet(pet){
+        this.pets.push(pet);
     };
 
-    countMascotas(){
-        return console.log(this.mascotas.length);
+    countPets(){
+        return console.log(this.pets.length);
     };
 
-    addBook(nombre, autor){
-        const libro = {
-            nombre: nombre,
-            autor: autor
+    addBook(name, author){
+        const book = {
+            name: name,
+            author: author
         };
 
-        this.libros.push(libro);
+        this.books.push(book);
     };
 
     getBookNames(){
-        const bookNames = this.libros.map(libro => libro.nombre);
+        const bookNames = this.books.map(book => book.name);
         return bookNames;
     };
  };
 
-const libros = [
+const books = [
     {
-        nombre: 'Ikigai',
-        autor: 'Francesc Miralles'
+        name: 'Ikigai',
+        author: 'Francesc Miralles'
     },
     {
-        nombre: 'Atomic Habits',
-        autor: 'James Clear'
+        name: 'Atomic Habits',
+        author: 'James Clear'
     }
 ];
 
- const usuario = new Usuario('Sasha', 'Racagni', libros, ['perro', 'gato']);
+ const user = new User('Sasha', 'Racagni', books, ['perro', 'gato']);
 
- usuario.getfullName();
- usuario.addMascota('conejo');
- usuario.countMascotas();
- usuario.addBook('El dia que Nietzsche lloro', 'Irvin D. Yalom');
- console.log(usuario.getBookNames());
+ user.getFullName();
+ user.addPet('conejo');
+ user.countPets();
+ user.addBook('El dia que Nietzsche lloro', 'Irvin D. Yalom');
+ console.log(user.getBookNames());

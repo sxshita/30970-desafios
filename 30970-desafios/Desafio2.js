@@ -11,10 +11,10 @@ class Container {
             const id = this.products.length + 1;
             object.id = id;
             this.products.push(object);
-            await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(this.products, null, '\t'));
+            await fs.promises.writeFile(`${this.name}.json`, JSON.stringify(this.products, null, '\t'));
             return id;
         } 
-        catch(error) {
+        catch {
             console.log('No se pudo escribir el archivo');
         };
     };
@@ -26,13 +26,13 @@ class Container {
 
     async getAll(){
         try{
-            let data = await fs.promises.readFile(`${this.name}.txt`, 'utf-8');
+            let data = await fs.promises.readFile(`${this.name}.json`);
             data = JSON.parse(data);
             return data;
         }
         catch(err) {
-            //throw new Error(err);
-            console.log('Hubo un error al obtener todos los productos.')
+            throw new Error(err);
+            //console.log('Hubo un error al obtener todos los productos.')
         }
         
     };
@@ -42,26 +42,27 @@ class Container {
             const data = await this.getAll();
             if(data.length > 0){
                 this.products = data.filter(product => product.id !== id);
-                await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(this.products, null, '\t'));
+                await fs.promises.writeFile(`${this.name}.json`, JSON.stringify(this.products, null, '\t'));
                 return 'Producto eliminado correctamente';
             } else {
                 return 'No hay productos para borrar;'
             };   
         }
-        catch {
-            console.log('No se pudo borrar el producto.');
+        catch(err) {
+            throw new Error(err);
+            //console.log('No se pudo borrar el producto.');
         };
     };
 
     async deleteAll() {
         try {
             this.products = [];
-            await fs.promises.unlink(`${this.name}.txt`);
+            await fs.promises.unlink(`${this.name}.json`);
             return 'Se borraron todos los productos correctamente.';
         }
         catch(err) {
-            //throw new Error(err);
-            console.log('No se pudieron borrar los productos.');
+            throw new Error(err);
+            //console.log('No se pudieron borrar los productos.');
         } ;
     };
 

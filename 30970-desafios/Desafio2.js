@@ -31,8 +31,8 @@ class Container {
             await fs.promises.writeFile(this.name, JSON.stringify(productsArray));
             return id;
         } 
-        catch {
-            console.log('No se pudo escribir el archivo');
+        catch(err) {
+            console.log('Error al escribir el archivo: ', err);
         };
     };
 
@@ -50,7 +50,7 @@ class Container {
             return data;
         }
         catch(err) {
-            console.log('Error al obtener todos los productos');
+            console.log('Error al obtener todos los productos: ', err);
             return [];
         };
         
@@ -68,8 +68,7 @@ class Container {
             };   
         }
         catch(err) {
-            throw new Error(err);
-            //console.log('No se pudo borrar el producto.');
+            console.log('Error al borrar el producto: ', err);
         };
     };
 
@@ -79,8 +78,7 @@ class Container {
             return 'Se borraron todos los productos correctamente.';
         }
         catch(err) {
-            throw new Error(err);
-            //console.log('No se pudieron borrar los productos.');
+            console.log('Error al borrar todos los productos: ', err);
         } ;
     };
 

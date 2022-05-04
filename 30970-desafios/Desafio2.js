@@ -50,6 +50,7 @@ class Container {
             return data;
         }
         catch(err) {
+            console.log('Error al obtener todos los productos');
             return [];
         };
         

@@ -50,9 +50,8 @@ class Container {
             return data;
         }
         catch(err) {
-            throw new Error(err);
-            //console.log('Hubo un error al obtener todos los productos.')
-        }
+            return [];
+        };
         
     };
 

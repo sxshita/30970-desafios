@@ -1,5 +1,13 @@
 const fs = require('fs');
 
+const Mac = {
+    title: 'Macbook Air M1', price: 140000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_679546-MLA47180498257_082021-O.webp'
+}
+
+const iPhone = {
+    title: 'iPhone 13', price: 200000, thumbnail: 'https://m.media-amazon.com/images/I/61l9ppRIiqL.jpg'
+}
+
 const fileExist = async (path) => {
     try {
         const stats = fs.existsSync(path);
@@ -15,7 +23,7 @@ const fileExist = async (path) => {
 
 class Container {
     constructor(name){
-        this.name = `${name}.json`;
+        this.name = `${name}.txt`;
         this.counter = 1;
     };
 
@@ -82,37 +90,35 @@ class Container {
         } ;
     };
 
+    async randomProduct(){
+        try {
+            const productos = await this.getAll();
+            const index = Math.floor(Math.random() * (productos.length + 1));
+            const producto = await this.getById(index);
+            return producto;
+        }
+        catch(err) {
+            console.log('Se produjo un error: ', err);
+        };
+    };
+
 };
 
 async function main(){
     try{
-        const Mac = {
-            title: 'Macbook Air M1', price: 140000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_679546-MLA47180498257_082021-O.webp'
-        }
-        
-        const iPhone = {
-            title: 'iPhone 13', price: 200000, thumbnail: 'https://m.media-amazon.com/images/I/61l9ppRIiqL.jpg'
-        }
-        
         const Apple = new Container('Apple');
         
         console.log(await Apple.save(Mac));
         
         console.log(await Apple.save(iPhone));
-
-        console.log(await Apple.getById(2));
-
-        console.log(await Apple.getAll());
-
-        console.log(await Apple.deleteById(2));
-
-        console.log(await Apple.deleteAll());
     }
     catch(err) {
         console.log(err)
     }
 }
 
-main();
+//main();
+const Apple = new Container('Apple');
+module.exports = Apple;
 
 

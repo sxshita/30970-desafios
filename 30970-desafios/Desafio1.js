@@ -46,8 +46,8 @@ const books = [
 
  const user = new User('Sasha', 'Racagni', books, ['perro', 'gato']);
 
- user.getFullName();
- user.addPet('conejo');
- user.countPets();
- user.addBook('El dia que Nietzsche lloro', 'Irvin D. Yalom');
- console.log(user.getBookNames());
+//  user.getFullName();
+//  user.addPet('conejo');
+//  user.countPets();
+//  user.addBook('El dia que Nietzsche lloro', 'Irvin D. Yalom');
+//  console.log(user.getBookNames());

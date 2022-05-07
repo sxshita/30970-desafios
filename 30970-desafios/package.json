@@ -2,10 +2,10 @@
   "name": "30970-desafios",
   "version": "1.0.0",
   "description": "",
-  "main": "Desafio1.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon Desafio3.js"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

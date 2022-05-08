@@ -93,7 +93,8 @@ class Container {
     async randomProduct(){
         try {
             const productos = await this.getAll();
-            const index = Math.floor(Math.random() * (productos.length + 1));
+            const index = Math.floor(Math.random() * ((productos.length + 1) - 1) + 1);
+            console.log(index)
             const producto = await this.getById(index);
             return producto;
         }
@@ -118,7 +119,7 @@ async function main(){
 }
 
 //main();
-const Apple = new Container('Apple');
-module.exports = Apple;
+// const Apple = new Container('Apple');
+module.exports = Container;
 
 

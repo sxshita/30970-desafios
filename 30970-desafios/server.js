@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 const port = 8080;
-const Apple = require('./Desafio2');
+const Container = require('./Desafio2');
+const Apple = new Container('Apple');
+// const Apple = require('./Desafio2');
 
 const server = app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${server.address().port}`);
